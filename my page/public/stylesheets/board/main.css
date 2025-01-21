@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* 背景色 */
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #ffffff; /* 標題背景色 */
+    border-bottom: 1px solid #ccc; /* 底部邊框 */
+    position: relative;
+}
+
+.username {
+    margin-left: auto;
+    padding: 10px;
+    font-weight: bold;
+}
+
+h1 {
+    text-align: center; /* 標題居中 */
+    margin-top: 20px; /* 顯示在中上方 */
+}
+
+#messageForm {
+    display: flex;
+    flex-direction: column; /* 讓表單元素垂直排列 */
+    align-items: center; /* 對齊到中心 */
+    margin: 20px;
+}
+
+textarea {
+    width: 80%; /* 設置文本區寬度 */
+    height: 100px; /* 設置文本區高度 */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc; /* 邊框 */
+    border-radius: 4px; /* 圓角 */
+}
+
+button {
+    padding: 10px 20px; /* 按鈕內邊距 */
+    border: none; /* 去掉邊框 */
+    background-color: #007bff; /* 按鈕顏色 */
+    color: white; /* 字體顏色 */
+    border-radius: 4px; /* 圓角 */
+    cursor: pointer; /* 鼠標懸停變為手形 */
+}
+
+button:hover {
+    background-color: #0056b3; /* 按鈕懸停顏色 */
+}
+
+.message-list {
+    margin: 20px;
+}
+
+.message {
+    border: 1px solid #ccc;
+    background-color: #ffffff; /* 留言背景色 */
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px; /* 圓角 */
+}

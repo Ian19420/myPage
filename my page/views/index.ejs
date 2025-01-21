@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YuXuan個人主頁</title>
+    <link rel="stylesheet" href="/stylesheets/main.css">
+</head>
+<body>
+    <div id="particlesjs-config-js" style="background-color: aliceblue; background-size: cover; background-repeat: no-repeat; background-position: 50% 50%;">
+        <canvas class="particles-js-canvas-el" width="1102" height="912" style="width: 100%; height: 100%;"></canvas>
+    </div>
+    
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#hero">home</a></li>
+                <li><a href="#about">about</a></li>
+                <li><a href="#projects">projects</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div id="hero" class="hero-block">
+            <h1>Welcome to YuXuan's blog!</h1>
+        </div>
+        <div id="about" class="about-block">
+            <p><strong>Education:</strong> Graduated from Kaohsiung High School, currently continuing studies</p>
+            <p><strong>Birthday:</strong> November 2, 2005</p>
+            <p><strong>Horoscope:</strong> Scorpio</p>
+            <p><strong>Personality:</strong> Calm, sometimes rational and sometimes emotional, still discovering...</p>
+            <p><strong>Hobbies:</strong> Fitness, sleeping, occasionally coding</p>
+        </div>
+        <div id="projects" class="projects-block">
+            <p><strong>Project1:</strong> <a href="/board/">Message Board</a></p>
+        </div>
+    </main>    
+
+    <script src="/javascripts/particles.js"></script>
+    <script>
+        particlesJS.load('particlesjs-config-js', '/javascripts/particlesjs-config.json', function() {
+            console.log('callback - particles.js config loaded');
+        })
+
+        let isAboutVisible = false;
+        let isProjectsVisible = false;
+
+        const aboutLink = document.querySelector('a[href="#about"]');
+        const aboutSection = document.getElementById('about');
+
+        aboutLink.addEventListener('click', function (event) {
+            event.preventDefault();
+
+
+            if (isProjectsVisible) {
+                projectsSection.style.opacity = 0;
+                setTimeout(function () {
+                    projectsSection.style.display = 'none';
+                }, 1000);
+                isProjectsVisible = false;
+            }
+
+            if (!isAboutVisible) {
+                aboutSection.style.display = 'block';
+                setTimeout(function () {
+                    aboutSection.style.opacity = 1;
+                }, 10);
+            } else {
+                aboutSection.style.opacity = 0;
+                setTimeout(function () {
+                    aboutSection.style.display = 'none';
+                }, 1000);
+            }
+
+            isAboutVisible = !isAboutVisible;
+        });
+
+        const projectsLink = document.querySelector('a[href="#projects"]');
+        const projectsSection = document.getElementById('projects');
+
+        projectsLink.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            if (isAboutVisible) {
+                aboutSection.style.opacity = 0;
+                setTimeout(function () {
+                    aboutSection.style.display = 'none';
+                }, 1000);
+                isAboutVisible = false;
+            }
+
+            if (!isProjectsVisible) {
+                projectsSection.style.display = 'block';
+                setTimeout(function () {
+                    projectsSection.style.opacity = 1;
+                }, 10);
+            } else {
+                projectsSection.style.opacity = 0;
+                setTimeout(function () {
+                    projectsSection.style.display = 'none';
+                }, 1000);
+            }
+
+            isProjectsVisible = !isProjectsVisible;
+        });
+
+
+    </script>
+
+
+</body>
+</html>

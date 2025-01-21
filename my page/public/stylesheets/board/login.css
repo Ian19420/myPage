@@ -1,0 +1,60 @@
+/* Reset 基本樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fa; /* 淺灰藍背景色 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 登入容器 */
+.login-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 淺陰影 */
+    text-align: center;
+    width: 350px;
+}
+
+/* 標題樣式 */
+.login-container h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+}
+
+/* 表單輸入框樣式 */
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+/* 登入按鈕樣式 */
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #0056b3; /* 深藍色 hover 效果 */
+}

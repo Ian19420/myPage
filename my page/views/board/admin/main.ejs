@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="utf-8">
+    <title>不知道叫什麼的留言板</title>
+    <link rel="stylesheet" href="/stylesheets/board/main.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="username" id="usernameDisplay"><%= username ? username : '未登入' %></div>
+    </div>
+    <h1>留言板</h1>
+    <form id="messageForm">
+        <textarea name="content" placeholder="留言內容" required></textarea>
+        <button type="submit">張貼留言</button>
+    </form>
+    <div id="message"></div>
+    <div id="message-list" class="message-list"></div>
+    <script>
+        $(document).ready(function()
+        {
+            $.ajax(
+            {
+                url: '/admin/user/content',
+                method: 'GET',
+                success: function(response)
+                {
+                    const messages=response.data;
+                    messages.forEach(message => 
+                    {
+                        const messageDiv = `<div class="message">
+                                                <strong>${message.username}:</strong>
+                                                <p>${message.content}</p>
+                                            </div>`;
+                        $('#message-list').append(messageDiv);
+                    });
+                },
+                error: function(jqXHR)
+                {
+                    console.error('獲取留言失敗:', jqXHR.responseJSON);
+                }
+            });
+            $('#messageForm').on('submit', function(event)
+            {
+                event.preventDefault();
+                const username = $('#usernameDisplay').text();
+                $.ajax(
+                {
+                    url: '/admin/user/post',
+                    method: 'POST',
+                    data: 'username=' + encodeURIComponent(username) + '&' + $(this).serialize(),
+                    success: function(response)
+                    {
+                        $('#message').html('<div class="alert alert-success">張貼成功!</div>');
+                        location.reload();
+                    },
+                    error: function(jqXHR)
+                    {
+                        var errorMessage = jqXHR.responseJSON ? jqXHR.responseJSON.error : '張貼失敗!';
+                        $('#message').html('<div class="alert alert-danger">' + errorMessage + '</div>');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

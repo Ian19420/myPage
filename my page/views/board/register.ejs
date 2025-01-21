@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>不知道叫什麼的留言板-註冊</title>
+    <link rel="stylesheet" href="/stylesheets/board/register.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="register-container">
+        <h1>註冊</h1>
+        <form id="registerForm">
+            <input type="text" name="username" placeholder="使用者名稱" required>
+            <input type="password" name="password" placeholder="密碼" required>
+            <button type="submit" class="register-button">註冊</button>
+        </form>
+        <div id="message"></div>
+    </div>
+    <script>
+        $(document).ready(function()
+        {
+            $('#registerForm').on('submit', function(event)
+            {
+                event.preventDefault();
+                $.ajax(
+                {
+                    url: '/board/admin/register',
+                    method: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response)
+                    {
+                        $('#message').html('<div class="alert alert-success">註冊成功!</div>');
+                        setTimeout(function()
+                        {
+                            window.location.href = '/board/';
+                        }, 3000);
+                    },
+                    error: function(jqXHR)
+                    {
+                        var errorMessage = jqXHR.responseJSON ? jqXHR.responseJSON.error : '註冊失敗!';
+                        $('#message').html('<div class="alert alert-danger">' + errorMessage + '</div>');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

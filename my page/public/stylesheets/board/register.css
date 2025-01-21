@@ -1,0 +1,60 @@
+/* Reset 基本樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fa; /* 淺灰藍背景色 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 註冊容器樣式 */
+.register-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 淺陰影 */
+    text-align: center;
+    width: 350px;
+}
+
+/* 標題樣式 */
+.register-container h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+}
+
+/* 表單輸入框樣式 */
+.register-container input[type="text"],
+.register-container input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+/* 註冊按鈕樣式 */
+.register-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745; /* 綠色強調色 */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.register-button:hover {
+    background-color: #218838; /* 深綠色 hover 效果 */
+}
