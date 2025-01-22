@@ -1,4 +1,4 @@
-/* Reset 基本樣式 */
+
 * {
   margin: 0;
   padding: 0;
@@ -7,8 +7,8 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f8f9fa; /* 淺灰色背景 */
-  color: #333; /* 深灰色文字 */
+  background-color: #f8f9fa; 
+  color: #333; 
   line-height: 1.6;
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@ body {
   padding: 20px;
 }
 
-/* 頁面標題 */
+
 .title {
   font-size: 2.5em;
   color: #222;
@@ -24,18 +24,18 @@ body {
   text-align: center;
 }
 
-/* 頂部區域 */
+
 .header {
   width: 100%;
   display: flex;
   justify-content: flex-end;
   gap: 10px;
   padding: 10px 20px;
-  background-color: #fff; /* 白色背景 */
+  background-color: #fff; 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* 按鈕樣式 */
+
 .login-button,
 .register-button {
   text-decoration: none;
@@ -43,16 +43,16 @@ body {
   border-radius: 5px;
   font-size: 0.9em;
   color: #fff;
-  background-color: #007bff; /* 藍色強調色 */
+  background-color: #007bff; 
   transition: background-color 0.3s;
 }
 
 .login-button:hover,
 .register-button:hover {
-  background-color: #0056b3; /* 深藍色 hover 效果 */
+  background-color: #0056b3; 
 }
 
-/* 瀏覽賣場商品的連結 */
+
 a {
   color: #007bff;
   text-decoration: none;
@@ -67,14 +67,14 @@ a:hover {
   border: 1px solid #ccc;
   margin: 10px;
   padding: 10px;
-  opacity: 0; /* 初始透明度为0 */
-  transform: translateY(20px); /* 初始位置稍微下移 */
-  transition: opacity 0.5s ease, transform 0.5s ease; /* 动画过渡 */
+  opacity: 0; 
+  transform: translateY(20px); 
+  transition: opacity 0.5s ease, transform 0.5s ease; 
 }
 
 .message.show {
-  opacity: 1; /* 变为完全可见 */
-  transform: translateY(0); /* 返回到初始位置 */
+  opacity: 1;
+  transform: translateY(0); 
 }
 
 #message-list {
@@ -83,10 +83,10 @@ a:hover {
 }
 
 .title {
-  transition: transform 0.5s ease, opacity 0.5s ease; /* 标题的动画过渡 */
+  transition: transform 0.5s ease, opacity 0.5s ease; 
 }
 
 .title.hide {
-  transform: translateY(-50px); /* 标题向上移动 */
-  opacity: 0; /* 标题消失 */
+  transform: translateY(-50px); 
+  opacity: 0;
 }
