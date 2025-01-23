@@ -21,6 +21,7 @@ div {
 }
 
 header nav ul {
+    font-family: 'Source Sans Pro', sans-serif;
     list-style: none;
     display: flex;
     justify-content: center;
@@ -31,7 +32,7 @@ header nav ul {
     top: calc(20% + 100px); 
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 100;
 }
 
 header nav ul li {
@@ -48,14 +49,14 @@ header nav ul li a {
 .hero-block {
     font-family: 'Source Sans Pro', sans-serif;
     position: fixed;
-    top: 20%; 
+    top: 15%; 
     left: 50%; 
     transform: translateX(-50%); 
     text-align: center;
     padding: 20px 40px; 
     background-color: transparent; 
     width: fit-content; 
-    z-index: 100; 
+    z-index: 1000; 
 }
 
 
@@ -91,11 +92,12 @@ header nav ul li a {
 
 
 #about {
+    font-family: 'Source Sans Pro', sans-serif;
     display: none; 
     opacity: 0; 
     padding: 50px;
     background-color: transparent; 
-    margin-top: 300px;
+    margin-top: 250px;
     text-align: center;
     z-index: 1000;
     transition: opacity 1s ease-in-out; 
@@ -110,11 +112,12 @@ header nav ul li a {
 }
 
 #projects {
+    font-family: 'Source Sans Pro', sans-serif;
     display: none; 
     opacity: 0; 
     padding: 50px;
     background-color: transparent; 
-    margin-top: 300px; 
+    margin-top: 250px; 
     text-align: center;
     z-index: 1000;
     transition: opacity 1s ease-in-out; 
@@ -126,19 +129,43 @@ header nav ul li a {
 .projects-block strong {
     font-size: 1.6em; 
 }
+.social-links-block {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.social-links-block h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.social-links-block a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.social-links-block img {
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.social-links-block img:hover {
+    transform: scale(1.1);
+}
+
 @media (max-width: 768px) {
     .hero-block {
-        top: 30%;
+        top: 15%;
         width: 80%;
     }
     
     header nav ul {
-        top: calc(30% + 100px); 
+        top: calc(15% + 100px); 
     }
     
 
     #about, #projects {
-        margin-top: 200px;
+        margin-top: 100px;
         padding: 30px;
         font-size: 14px;
     }
@@ -148,16 +175,16 @@ header nav ul li a {
 }
 @media (min-width: 769px) and (max-width: 1024px) {
     .hero-block {
-        top: 20%; 
+        top: 15%; 
         width: 90%; 
     }
     
     header nav ul {
-        top: calc(20% + 100px); 
+        top: calc(15% + 100px); 
     }
 
     #about, #projects {
-        margin-top: 200px; 
+        margin-top: 150px; 
         padding: 40px; 
         font-size: 16px;
     }
@@ -166,16 +193,16 @@ header nav ul li a {
 
 @media (min-width: 1025px) {
     .hero-block {
-        top: 20%;
+        top: 15%;
         width: 70%; 
     }
 
     header nav ul {
-        top: calc(20% + 100px); 
+        top: calc(15% + 100px); 
     }
 
     #about, #projects {
-        margin-top: 250px; 
+        margin-top: 150px; 
         padding: 50px; 
     }
 }

@@ -13,6 +13,20 @@ body {
     border-bottom: 1px solid #ccc; /* 底部邊框 */
     position: relative;
 }
+.quit {
+    margin-right: auto;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    color: #fff;
+    background-color: #007bff; 
+    transition: background-color 0.3s;
+}
+.quit:hover {
+  background-color: #0056b3; 
+}
+
 
 .username {
     margin-left: auto;

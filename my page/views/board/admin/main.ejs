@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="header">
+        <a href="/" class="quit">退出</a>
         <div class="username" id="usernameDisplay"><%= username ? username : '未登入' %></div>
     </div>
     <h1>留言板</h1>
@@ -22,7 +23,7 @@
         {
             $.ajax(
             {
-                url: '/admin/user/content',
+                url: '/board/admin/content',
                 method: 'GET',
                 success: function(response)
                 {
@@ -47,7 +48,7 @@
                 const username = $('#usernameDisplay').text();
                 $.ajax(
                 {
-                    url: '/admin/user/post',
+                    url: '/board/admin/post',
                     method: 'POST',
                     data: 'username=' + encodeURIComponent(username) + '&' + $(this).serialize(),
                     success: function(response)
