@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    border: 10px solid rgb(27, 84, 243);
+}
+.controls {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.return-button {
+    position: absolute;
+    top: 10px;           
+    left: 10px;
+    margin-right: auto;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    color: #fff;
+    background-color: #007bff; 
+    transition: background-color 0.3s;
+}
+
+.horizontal-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+}
+.button {
+    width: 70px;
+    height: 70px;
+    margin: 5px;
+    background-color: gray;
+    border: none;
+    color: white;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.vertical-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.vertical-buttons button {
+    margin: 1px 0;
+}

@@ -9,6 +9,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var boardRouter = require('./routes/board/index');
 var boardAdminRouter = require('./routes/board/admin/board')
+var snakeRouter = require('./routes/snake/index')
 var session=require('express-session');
 
 var app = express();
@@ -34,6 +35,7 @@ app.use(session(
 app.use('/', indexRouter);
 app.use('/board/', boardRouter);
 app.use('/board/admin/',boardAdminRouter);
+app.use('/snake/',snakeRouter);
 
 
 app.use(function(req, res, next)

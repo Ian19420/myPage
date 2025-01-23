@@ -28,7 +28,7 @@ body {
 .header {
   width: 100%;
   display: flex;
-  justify-content: space-between; /* 讓按鈕分散到兩側 */
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
   padding: 10px 20px;
@@ -37,7 +37,7 @@ body {
 }
 
 .return-button {
-  margin-right: auto; /* 自動靠左對齊 */
+  margin-right: auto; 
   text-decoration: none;
   padding: 8px 15px;
   border-radius: 5px;
