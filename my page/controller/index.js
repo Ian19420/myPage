@@ -1,4 +1,4 @@
-var bcrypt=require('bcryptjs');
+var bcrypt=require('bcrypt');
 function register(Entity, params, req, res)
 {
     const saltRounds = 10;

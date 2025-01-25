@@ -160,12 +160,12 @@ header nav ul li a {
     }
     
     header nav ul {
-        top: calc(15% + 100px); 
+        top: calc(15% + 120px); 
     }
     
 
     #about, #projects {
-        margin-top: 100px;
+        margin-top: 150px;
         padding: 30px;
         font-size: 14px;
     }

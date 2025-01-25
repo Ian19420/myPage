@@ -56,11 +56,6 @@ function startGame(currentTime) {
     }
 
     checkColli();
-    let win = isWin();
-    if (win) {
-        return;
-    }
-
     clearScreen();
     drawApple();
     drawSnake();
@@ -99,8 +94,10 @@ function isOver() {
         ctx.fillStyle = "white";
         ctx.font = "50px Poppins";
         ctx.fillText("Game Over!", canvas.width / 6.5, canvas.height / 2);
+        ctx.font = "20px Poppins";
+        ctx.fillText("scores: " + score, canvas.width / 2.5, canvas.height / 2 + 20);
         ctx.font = "40px Poppins";
-        ctx.fillText("再玩一次?", canvas.width / 3.5, canvas.height / 2 + 50);
+        ctx.fillText("再玩一次?", canvas.width / 3.5, canvas.height / 2 + 70);
         ctx.font = "25px Poppins";
         ctx.fillText("按空白鍵", canvas.width / 2.7, canvas.height / 2 + 100);
         return true;
