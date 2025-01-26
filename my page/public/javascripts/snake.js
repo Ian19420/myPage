@@ -21,16 +21,12 @@ let score = 0;
 let lastRenderTime = 0;
 let isGameStarted = false;
 
-let appleX = 5;
-let appleY = 5;
-let slowApple = generateApplePosition();
-let slowAppleX = slowApple.x;
-let slowAppleY = slowApple.y;
-let drawSlowApple = false;
-let shortApple = generateApplePosition();
-let shortAppleX = shortApple.x;
-let shortAppleY = shortApple.y;
-let drawShortApple = false;
+let apples = {
+    normal: { x: 5, y: 5, draw: true },
+    slow: { x: 6, y: 19, draw: true, can: false },
+    short: { x: 7, y: 10, draw: true, can: false },
+    speed: { x: 19, y: 19, draw: true, can: false }
+};
 
 ctx.fillStyle = 'black';
 ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -45,19 +41,23 @@ function startGame(currentTime) {
         requestAnimationFrame(startGame);
         return;
     }
-
     lastRenderTime = currentTime;
-
     snakePosition();
     let lose = isOver();
     if (lose) {
         document.body.addEventListener('keydown', playAgain);
         return;
     }
-
-    checkColli();
+    checkColliSpecial();
+    checkColliNormal();
     clearScreen();
-    drawApple();
+    NormalPosition();
+    drawApple("red", apples.normal.x, apples.normal.y, apples.normal.draw);
+    SpecialPosition();
+    drawApple("yellow", apples.slow.x, apples.slow.y, apples.slow.draw);
+    drawApple("#ADD8E6", apples.short.x, apples.short.y, apples.short.draw);
+    drawApple('#C8A2C8', apples.speed.x, apples.speed.y, apples.speed.draw);
+
     drawSnake();
     drawScore();
 
@@ -118,60 +118,70 @@ function clearScreen() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-function checkColli() {
-    if (appleX === headX && appleY === headY) {
-        let newApple = generateApplePosition();
-        appleX = newApple.x;
-        appleY = newApple.y;
+function checkColliNormal() {
+    if (apples.normal.x === headX && apples.normal.y === headY) {
+        apples.normal.draw = false;
+        apples.speed.can = !(Math.random() < 0.5);
+        apples.short.can = !(Math.random() < 0.5);
+        apples.slow.can = !(Math.random() < 0.5);
         tailLen++;
         score++;
         if (score > 5 && score % 2 === 0) {
             speed++;
         }
-        drawSlowApple = Math.random() < 0.5;
-        drawShortApple = Math.random() < 0.3;
     }
-    if (slowAppleX === headX && slowAppleY === headY) {
-        let newApple = generateApplePosition();
-        slowAppleX = newApple.x;
-        slowAppleY = newApple.y;
-        speed = Math.max(speed - 3, 1);
+}
+function checkColliSpecial() {
+    if (apples.slow.x === headX && apples.slow.y === headY && apples.slow.draw) {
+        apples.slow.draw = false;
+        speed = Math.max(speed - 1, 1);
     }
-    if (shortAppleX === headX && shortAppleY === headY) {
-        let newApple = generateApplePosition();
-        shortAppleX = newApple.x;
-        shortAppleY = newApple.y;
+    if (apples.short.x === headX && apples.short.y === headY && apples.short.draw) {
+        apples.short.draw = false;
         tailLen = Math.max(tailLen - 2, 1);
-        drawShortApple = Math.random() < 0.3;
+    }
+    if (apples.speed.x === headX && apples.speed.y === headY && apples.speed.draw) {
+        apples.speed.draw = false;
+        speed += 2;
+    }
+}
+function NormalPosition() {
+    if(!apples.normal.draw) {
+        let newApple = generateApplePosition();
+        apples.normal.x = newApple.x;
+        apples.normal.y = newApple.y;
+        apples.normal.draw = true;
+    }
+}
+function SpecialPosition() {
+    if (apples.slow.can && !apples.slow.draw) {
+        let newApple = generateApplePosition();
+        apples.slow.x = newApple.x;
+        apples.slow.y = newApple.y;
+        apples.slow.draw = true;
+        apples.slow.can = false;
+    }
+    if (apples.short.can && !apples.short.draw) { 
+        let newApple = generateApplePosition();
+        apples.short.x = newApple.x;
+        apples.short.y = newApple.y;
+        apples.short.draw = true;
+        apples.short.can = false;
+    }
+    if (apples.speed.can && !apples.speed.draw) {
+        let newApple = generateApplePosition();
+        apples.speed.x = newApple.x;
+        apples.speed.y = newApple.y;
+        apples.speed.draw = true;
+        apples.speed.can = false;
     }
 }
 
-function isWin() {
-    let win = false;
-    if (score == 25) {
-        win = true;
+function drawApple(color, x, y, can) {
+    if(can) {       
+        ctx.fillStyle = color;
+        ctx.fillRect(x * tileCount, y * tileCount, tileSize, tileSize);
     }
-    if (win) {
-        ctx.fillStyle = "white";
-        ctx.font = "50px Poppins";
-        ctx.fillText("你贏了!", canvas.width / 3.3, canvas.height / 2)
-    }
-    return win;
-}
-
-function drawApple() {
-    drawSingleApple("red", appleX, appleY);
-    if (drawSlowApple) {
-        drawSingleApple("yellow", slowAppleX, slowAppleY);
-    }
-    if (drawShortApple) {
-        drawSingleApple("blue", shortAppleX, shortAppleY);
-    }
-}
-
-function drawSingleApple(color, x, y) {
-    ctx.fillStyle = color;
-    ctx.fillRect(x * tileCount, y * tileCount, tileSize, tileSize);
 }
 
 function generateApplePosition() {
@@ -181,11 +191,16 @@ function generateApplePosition() {
             x: Math.floor(Math.random() * tileCount),
             y: Math.floor(Math.random() * tileCount)
         };
-    } while (
-        snakeParts.some(part => part.x === position.x && part.y === position.y) ||
-        (position.x === headX && position.y === headY)
-    );
+    } while (isApplePositionInvalid(position));
     return position;
+}
+
+function isApplePositionInvalid(position) {
+    if (snakeParts.some(part => part.x === position.x && part.y === position.y) ||
+        (position.x === headX && position.y === headY)) {
+        return true;
+    }
+    return Object.values(apples).some(apple => apple.x === position.x && apple.y === position.y);
 }
 
 function drawScore() {
