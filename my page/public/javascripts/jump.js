@@ -234,14 +234,12 @@ document.body.addEventListener('keydown', event => {
     }
 });
 document.getElementById('up').addEventListener('click', function() {
-    if (isOnGround()) {
-        jump();
-    }
+    jump();
 });
 document.getElementById('left').addEventListener('click', function() {
     xV = -0.7;
 });
 document.getElementById('right').addEventListener('click', function() {
     xV = 0.7;
-})
+});
 requestAnimationFrame(startGame);

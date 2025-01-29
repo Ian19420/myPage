@@ -11,6 +11,7 @@ var boardRouter = require('./routes/board/index');
 var boardAdminRouter = require('./routes/board/admin/board');
 var snakeRouter = require('./routes/snake/index');
 var jumpRouter = require('./routes/jump/index');
+var cloneRouter = require('./routes/breakoutClone/index');
 var session=require('express-session');
 
 var app = express();
@@ -38,6 +39,7 @@ app.use('/board/', boardRouter);
 app.use('/board/admin/',boardAdminRouter);
 app.use('/snake/',snakeRouter);
 app.use('/jump/', jumpRouter);
+app.use('/breakoutClone/',cloneRouter);
 
 
 app.use(function(req, res, next)
